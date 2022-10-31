@@ -50,8 +50,10 @@ _**target-arch**_ : `386` `amd64` `amd64p32` `arm` `arm64` `arm64be` `armbe` `lo
 
 ## Customize Script :
 Rules :
-- all requirement file must inside folder "bin" (as root external config).  
-- the extension for main script is ".the". All ".the" will load as menu.  
-- Filename of .the is must same with name of script (inside).  
+- All requirement file must inside folder **`bin`** (as root external config).  
+- Extension for main script is **`.the`**.
+- All filename with extension **`.the`** will load in installer menu.  
+- Filename of **`.the`** is must same with name of script (inside).  
 - Filename will auto convert space to underscore ( _ ).
-- put the binari/executable in same folder with all script and requirement files.
+- Put the binary/executable in same folder with all script and requirement files.
+- Binary/executable/program location is as root path for scripts.
