@@ -29,8 +29,10 @@ Provide by [Fixdigital.NET](http://fixdigital.net) as is.
 #### Run binary with :
 
     > ./ai-linux-x64
-    or
+
     > ./ai-linux-x64 help
+    > ./ai-linux-x64
+
     for available arguments
 
     _THen follow the instructions._
