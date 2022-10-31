@@ -1,6 +1,6 @@
 ## Server Auto Installer
-Automation Install Tools for configured server 
-Provide by [Fixdigital.NET](http://fixdigital.net) as is. 
+Automation Install Tools for configured server.  
+Provide by us as is. 
 
 ### Download binary application from release
 [Download Latest Release](../../releases)
@@ -26,16 +26,13 @@ Provide by [Fixdigital.NET](http://fixdigital.net) as is.
 
 #### Run binary with :
 
-> `./ai-linux-x64`
+```./ai-linux-x64```
 
 > `./ai-linux-x64 help`
 
 
 _Then follow the instructions._
 
-
-##### CURRENT ERROR
-none
 
 
 ## Build From Source
@@ -45,16 +42,16 @@ none
 
 > `set GOOS=linux GOARCH=amd64 go build -o bin/ai-linux-x64`
 
-_change GOOS=target-os_
-_target-os : "aix", "android", "darwin", "dragonfly", "freebsd", "hurd", "illumos", "ios", "js", "linux", "nacl", "netbsd", "openbsd", "plan9", "solaris", "windows", "zos"_
+**change GOOS=target-os**  
+_**list target-os**_ : `linux` `windows` `darwin` `freebsd` `android` `ios` `js` `aix` `dragonfly` `hurd` `illumos` `nacl` `netbsd` `openbsd` `plan9` `solaris` `zos`
 
-_change GOARCH=target-arch_
-_target-arch : "386", "amd64", "amd64p32", "arm", "arm64", "arm64be", "armbe", "loong64", "mips", "mips64", "mips64le", "mips64p32", "mips64p32le", "mipsle", "ppc", "ppc64", "ppc64le", "riscv", "riscv64", "s390", "s390x", "sparc", "sparc64", "wasm"_
+**change GOARCH=target-arch**  
+_**target-arch**_ : `386` `amd64` `amd64p32` `arm` `arm64` `arm64be` `armbe` `loong64` `mips` `mips64` `mips64le` `mips64p32` `mips64p32le` `mipsle` `ppc` `ppc64` `ppc64le` `riscv` `riscv64` `s390` `s390x` `sparc` `sparc64` `wasm`
 
-##### Customize Script :
+## Customize Script :
 Rules :
-- all requirement file must inside folder "bin" (as root external config).
-- the extension for main script is ".the". All ".the" will load as menu.
-- Filename of .the is must same with name of script (inside).
+- all requirement file must inside folder "bin" (as root external config).  
+- the extension for main script is ".the". All ".the" will load as menu.  
+- Filename of .the is must same with name of script (inside).  
 - Filename will auto convert space to underscore ( _ ).
 - put the binari/executable in same folder with all script and requirement files.
