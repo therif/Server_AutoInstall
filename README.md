@@ -1,11 +1,9 @@
 ## Server Auto Installer
 Automation Install Tools for configured server 
-
 Provide by [Fixdigital.NET](http://fixdigital.net) as is. 
 
-#### Download binary application from release
+### Download binary application from release
 [Download Latest Release](../../releases)
-
 
 
 #### Internal software/scripts feature :
@@ -28,14 +26,12 @@ Provide by [Fixdigital.NET](http://fixdigital.net) as is.
 
 #### Run binary with :
 
-    > ./ai-linux-x64
+> `./ai-linux-x64`
 
-    > ./ai-linux-x64 help
-    > ./ai-linux-x64
+> `./ai-linux-x64 help`
 
-    for available arguments
 
-    _THen follow the instructions._
+_Then follow the instructions._
 
 
 ##### CURRENT ERROR
@@ -45,12 +41,12 @@ none
 ## Build From Source
 > golang installed
 
-> go env GOOS=linux GOARCH=amd64 go build -o bin/ai-linux-x64
+> `go env GOOS=linux GOARCH=amd64 go build -o bin/ai-linux-x64`
 
-> set GOOS=linux GOARCH=amd64 go build -o bin/ai-linux-x64
+> `set GOOS=linux GOARCH=amd64 go build -o bin/ai-linux-x64`
 
-_change GOOS=<target-os>_
-_target os : windows, darwin, android, freebsd, ios, js, openbsd, solaris ._
+_change GOOS=target-os_
+_target-os : windows, darwin, android, freebsd, ios, js, openbsd, solaris ._
 
 
 
