@@ -6,30 +6,34 @@ Provide by [Fixdigital.NET](http://fixdigital.net) as is.
 #### Download binary application from release
 [Download Latest Release](../../releases)
 
-#### OS Supported :
+
+
+#### Internal software/scripts feature :
 - Ubuntu (Tested on Ubuntu 22.04 LTS)
 - Almalinux (Not Tested, Scheduled for Almalinux 9)
 
-##### Support Instalasi
-- Auto Update OS
-- Auto Upgrade System
-- OpenSSH Server
-- NTP
-- Samba (smbd)
-- Apache 2
-- Nginx
-- PHP 8.1 (php-fpm)
-- MySQL 8.0
-- phpMyAdmin 5.2.0 en (manual from zip)
+    ##### Internal Scripts Automation Avalable
+    - Auto Update OS
+    - Auto Upgrade System
+    - OpenSSH Server
+    - NTP
+    - Samba (smbd)
+    - Apache 2
+    - Nginx
+    - PHP 8.1 (php-fpm)
+    - MySQL 8.0
+    - phpMyAdmin 5.2.0 english
+
+
 
 #### Run binary with :
 
-> ./autoinstaller-linux-x64
-or
-> ./autoinstaller-linux-x64 help
-for available arguments
+    > ./ai-linux-x64
+    or
+    > ./ai-linux-x64 help
+    for available arguments
 
-_THen follow the instructions._
+    _THen follow the instructions._
 
 
 ##### CURRENT ERROR
@@ -39,11 +43,12 @@ none
 ## Build From Source
 > golang installed
 
-> go env GOOS=linux GOARCH=amd64 go build -o bin/autoinstaller-linux-x64
+> go env GOOS=linux GOARCH=amd64 go build -o bin/ai-linux-x64
 
-> set GOOS=linux GOARCH=amd64 go build -o bin/autoinstaller-linux-x64
+> set GOOS=linux GOARCH=amd64 go build -o bin/ai-linux-x64
 
-_For windows, change GOOS=windows, untuk Mac GOOS=darwin. Pilihan lain android,freebsd,ios,js,openbsd,solaris ._
+_change GOOS=<target-os>_
+_target os : windows, darwin, android, freebsd, ios, js, openbsd, solaris ._
 
 
 
