@@ -52,5 +52,5 @@ Rules :
 - all requirement file must inside folder "bin" (as root external config).
 - the extension for main script is ".the". All ".the" will load as menu.
 - Filename of .the is must same with name of script (inside).
-- 
-
+- Filename will auto convert space to underscore ( _ ).
+- put the binari/executable in same folder with all script and requirement files.
