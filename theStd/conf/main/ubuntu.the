@@ -1,0 +1,159 @@
+{
+    "name": "Ubuntu",
+    "version": "0.1",
+    "os": {
+        "name" : "ubuntu",
+        "ver": "22.04",
+        "type": "linux",
+        "arch": "amd64",
+        "distro": "debian"
+    },
+
+    "pkg_manager": {
+        "name": "apt",
+        "update": "apt update -y",
+        "upgrade_list": "apt list upgradable",
+        "upgrade": "apt upgrade -y"
+    },
+
+    "pkgreqinstall": {
+        "install": "apt install curl wget nano unzip screen -y"
+    },
+
+    "pkg": [
+        {
+            "name":"Open SSH",
+            "install":"apt install openssh-server -y",
+            "conf":"/etc/ntp.conf",
+            "service": {
+                "name":"ssh",
+                "stop":"systemctl stop ssh",
+                "start":"systemctl start ssh",
+                "restart":"systemctl restart ssh",
+                "status":"systemctl status ssh"
+            }
+        },
+        {
+            "name":"NTP",
+            "install":"apt install ntp -y",
+            "conf":"/etc/ntp.conf",
+            "service": {
+                "name":"ntp",
+                "stop":"systemctl stop ntp",
+                "start":"systemctl start ntp",
+                "restart":"systemctl restart ntp",
+                "status":"systemctl status ntp"
+            }
+        },
+        {
+            "name": "Samba",
+            "install": "apt install samba -y",
+            "conf":"/etc/samba/smb.conf",
+            "datafolder": "",
+            "service": {
+                "name":"smbd",
+                "stop":"systemctl stop smbd",
+                "start":"systemctl start smbd",
+                "restart":"systemctl restart smbd",
+                "status":"systemctl status smbd"
+            },
+            
+            "configure": [
+                {"act":"replacefile", "dest":"/etc/samba/smb.conf", "src":"conf/smb/fixdkarpro.conf", "sudo": true,"chmod":"755", "backup":true},
+                {"act":"output", "msg":"-- Creating Default Directory --"},
+                {"act":"cmd", "msg":"mkdir /mnt", "sudo": true},
+                {"act":"cmd", "msg":"mkdir /mnt/tesdir", "sudo": true},
+                {"act":"cmd", "msg":"mkdir /mnt/tesdir/subdir", "sudo": true},
+    
+                {"act":"cmd", "msg":"chmod 777 /mnt", "sudo": true},
+                {"act":"cmd", "msg":"chmod 777 /mnt/tesdir", "sudo": true},
+                {"act":"cmd", "msg":"chmod 777 /mnt/tesdir/subdir", "sudo": true},
+                {"act":"cmd", "msg":"systemctl restart smbd", "sudo": true, "output-pre":"-- Restarting Samba --"}
+            ]
+        },
+        {
+            "name": "PHP",
+            "use": "php-fpm",
+            "versi": "8.1",
+            "install": "apt install php8.1-fpm php8.1 -y",
+            "conf":"/etc/php/8.1/apache2/php.ini",
+            "conf_cli": "/etc/php/8.1/cli/php.ini",
+            "confdefault": "/etc/php/8.1/fpm/php.ini",
+
+            "installreq":"apt install libapache2-mod-php8.1 php8.1-common php8.1-mysqli php8.1-mysql php8.1-xml php8.1-xmlrpc php8.1-json php8.1-tidy php8.1-pear php8.1-curl php8.1-gd php8.1-imagick php8.1-cli php8.1-imap php8.1-mbstring php8.1-opcache php8.1-soap php8.1-bz2 php8.1-zip php8.1-intl php8.1-bcmath -y",
+
+            "service": {
+                "stop": "systemctl stop php8.1-fpm",
+                "start": "systemctl start php8.1-fpm",
+                "restart": "systemctl restart php8.1-fpm",
+                "status": "systemctl status php8.1-fpm"
+            }
+        },
+        {
+            "name":"Apache2",
+            "install": "apt install apache2 -y",
+            "conf":"/etc/apache2/apache.conf",
+            "confdefault": "/etc/apache2/sites-available/000-default.conf",
+            "datafolder": "/var/www/html",
+
+            "installreq":"apt install libapache2-mod-php8.1 -y",
+
+            "service": {
+                "stop": "systemctl stop apache2",
+                "start": "systemctl start apache2",
+                "restart": "systemctl restart apache2",
+                "status": "systemctl status apache2"
+            }
+            
+        },
+        {
+            "name":"Nginx",
+            "install": "apt install nginx -y",
+            "conf":"/etc/nginx/nginx.conf",
+            "confdefault": "/etc/nginx/sites-available/default",
+            "datafolder": "/var/www/html",
+            "service": {
+                "stop": "systemctl stop nginx",
+                "start": "systemctl start nginx",
+                "restart": "systemctl restart nginx",
+                "status": "systemctl status nginx"
+            },
+            "configure": [
+                {"act":"cmd", "msg":"systemctl stop nginx", "sudo": true},
+                {"act":"replacefile", "dest":"/etc/nginx/sites-available/default", "src":"conf/nginx/default.conf", "sudo": true,"chmod":"755", "backup":true},
+                {"act":"cmd", "msg":"systemctl restart nginx", "sudo": true, "textpre":"-- Restarting Nginx --", "textafter":""}
+            ]
+    
+        },
+        {
+            "name":"MySQL",
+            "install": "apt install mysql-server -y",
+            "conf":"",
+            "datafolder": "",
+            "service": {
+                "stop": "systemctl stop mysql",
+                "start": "systemctl start mysql",
+                "restart": "systemctl restart mysql",
+                "status": "systemctl status mysql"
+            },
+            "configure": [
+                {"act":"input", "textpre": "Password root DB ?"},
+                {"act":"cmd", "msg":"mysql -e \\\"ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '${input}'; \\\"", "sudo": true},
+                {"act":"cmd", "msg":"systemctl restart mysql", "sudo": true, "textpre":"-- Restarting MySQL Server --", "textafter":""},
+                {"act":"output", "msg":"-- Setup Secure MySQL Installation --"},
+                {"act":"cmd", "msg":"mysql -uroot -p${input} -e \\\"DELETE FROM mysql.user WHERE User='';DELETE FROM mysql.db WHERE Db='test' OR Db='test_%';FLUSH PRIVILEGES;\\\"", "sudo": true},
+        
+                {"act":"output", "msg":"Creating User THERIF..."},
+                {"act":"cmd", "msg":"mysql -uroot -p${input} -e \"CREATE USER 'therif'@'%' IDENTIFIED BY 'ganteng';\\\"", "sudo": true},
+
+                {"act":"output", "msg":"GRANT User THERIF..."},
+                {"act":"cmd", "msg":"mysql -uroot -p${input} -e \"GRANT ALL PRIVILEGES ON *.* TO 'therif'@'%' WITH GRANT OPTION;\\\"", "sudo": true},
+            ]
+    
+        }
+
+    ],
+    
+
+    "by": "therif"
+}

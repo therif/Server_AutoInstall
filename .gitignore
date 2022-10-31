@@ -13,3 +13,13 @@
 
 # Dependency directories (remove the comment below to include it)
 # vendor/
+
+bin/*
+!bin/*.the
+!bin/*.conf
+!bin/*.ini
+ref
+phpMyAdmin*
+wget-log*
+
+.DS_Store
