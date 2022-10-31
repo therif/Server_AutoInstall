@@ -38,9 +38,11 @@ _Then follow the instructions._
 ## Build From Source
 > golang installed
 
-> `go env GOOS=linux GOARCH=amd64 go build -o bin/ai-linux-x64`
+> `go env GOOS=linux GOARCH=amd64 go build -o bin/ai-linux-x64`  
 
-> `set GOOS=linux GOARCH=amd64 go build -o bin/ai-linux-x64`
+> `set GOOS=linux GOARCH=amd64 go build -o bin/ai-linux-x64`  
+
+> `go build -o bin/ai-ubbuntu-x64`  
 
 **change GOOS=target-os**  
 _**list target-os**_ : `linux` `windows` `darwin` `freebsd` `android` `ios` `js` `aix` `dragonfly` `hurd` `illumos` `nacl` `netbsd` `openbsd` `plan9` `solaris` `zos`
