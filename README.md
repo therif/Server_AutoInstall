@@ -56,6 +56,7 @@ Rules :
 - Extension for main script is **`.the`**.
 - All filename with extension **`.the`** will load in installer menu.  
 - Filename of **`.the`** is must same with name of script (inside).  
-- Filename will auto convert space to underscore ( _ ).
-- Put the binary/executable in same folder with all script and requirement files.
-- Binary/executable/program location is as root path for scripts.
+- Filename of **`.the`**, must must change space to underscore ( _ ).
+- Filename of **`.the`**, must in the same folder with binary/executable/program
+- If scripts/conf/requirement filies in same folder, the path is "yourfilename.ext".
+- If scripts/conf/requirement filies in subfolder, the path is "folder/yourfilename.ext".
