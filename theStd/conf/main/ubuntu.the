@@ -17,7 +17,7 @@
     },
 
     "pkgreqinstall": {
-        "install": "apt install curl wget nano unzip screen net-tools -y"
+        "install": "apt install curl wget nano unzip screen net-tools iputils-ping -y"
     },
 
     "pkg": [
