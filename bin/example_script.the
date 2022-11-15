@@ -46,7 +46,7 @@
             },
             "configure": [
                 {"act":"cmd", "msg":"systemctl stop ntp", "sudo": true, "output-pre":"-- Stopping NTP --"},
-                {"act":"replacefile", "dest":"/etc/ntp.conf", "src":"ntp-ntp.conf", "sudo": true,"chmod":"755", "backup":true},
+                {"act":"replacefile", "dest":"/etc/ntp.conf", "src":"example_script/ntp-ntp.conf", "sudo": true,"chmod":"755", "backup":true},
                 {"act":"cmd", "msg":"systemctl restart ntp", "sudo": true, "output-pre":"-- Restarting NTP --"}
             
             ]
@@ -66,7 +66,7 @@
             
             "configure": [
                 {"act":"cmd", "msg":"systemctl stop smbd", "sudo": true, "output-pre":"-- Stopping Samba --"},
-                {"act":"replacefile", "dest":"/etc/samba/smb.conf", "src":"samba-smb.conf", "sudo": true,"chmod":"755", "backup":true},
+                {"act":"replacefile", "dest":"/etc/samba/smb.conf", "src":"example_script/samba-smb.conf", "sudo": true,"chmod":"755", "backup":true},
                 {"act":"output", "msg":"-- Creating Default Directory --"},
                 {"act":"cmd", "msg":"mkdir /mnt", "sudo": true},
                 {"act":"cmd", "msg":"mkdir /mnt/yourshare", "sudo": true},
@@ -136,7 +136,7 @@
             },
             "configure": [
                 {"act":"cmd", "msg":"systemctl stop nginx", "sudo": true, "textpre":"-- Stopping Nginx --"},
-                {"act":"replacefile", "dest":"/etc/nginx/sites-available/default", "src":"nginx-default.conf", "sudo": true,"chmod":"755", "backup":false},
+                {"act":"replacefile", "dest":"/etc/nginx/sites-available/default", "src":"example_script/nginx-default.conf", "sudo": true,"chmod":"755", "backup":false},
                 {"act":"cmd", "msg":"ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default", "sudo": true},
                 {"act":"cmd", "msg":"systemctl restart nginx", "sudo": true, "textpre":"-- Restarting Nginx --", "textafter":""}
             ]
