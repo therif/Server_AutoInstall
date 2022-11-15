@@ -24,7 +24,7 @@
         {
             "name":"Open SSH",
             "install":"apt install openssh-server -y",
-            "conf":"/etc/ntp.conf",
+            "conf":"/etc/ssh/ssh_config",
             "service": {
                 "name":"ssh",
                 "stop":"systemctl stop ssh",
